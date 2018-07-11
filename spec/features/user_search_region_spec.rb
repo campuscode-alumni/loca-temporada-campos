@@ -11,12 +11,12 @@ feature 'Search by reagion' do
                             property_type: property_type_casa, region: copacabana,
                             rent_purpose: 'Festa', area: '100', room_quantity:'3',
                             accessibility: true, maximum_guests:'1', minimum_rent: 5,
-                            maximum_rent: 10, daily_rate: 150)
+                            maximum_rent: 10, daily_rate: 150,main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
     apartamento = Property.create(title: 'Apartamento', description: 'Casa na praia',
                             property_type: property_type_apartamento, region: paulista,
                             rent_purpose: 'Festa', area: '100', room_quantity:'3',
                             accessibility: true, maximum_guests:'2', minimum_rent: 5,
-                            maximum_rent: 10, daily_rate: 150)                      
+                            maximum_rent: 10, daily_rate: 150, main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))                      
 
     visit root_path
     click_on 'Copacabana'
@@ -50,12 +50,12 @@ feature 'Search by reagion' do
                             property_type: property_type_casa, region: copacabana,
                             rent_purpose: 'Festa', area: '100', room_quantity:'3',
                             accessibility: true, maximum_guests:'1', minimum_rent: 5,
-                            maximum_rent: 10, daily_rate: 150)
+                            maximum_rent: 10, daily_rate: 150, main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
     apartamento = Property.create(title: 'Apartamento', description: 'Casa na praia',
                             property_type: property_type_apartamento, region: copacabana,
                             rent_purpose: 'Festa', area: '100', room_quantity:'3',
                             accessibility: true, maximum_guests:'2', minimum_rent: 5,
-                            maximum_rent: 10, daily_rate: 150)      
+                            maximum_rent: 10, daily_rate: 150, main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))      
     visit root_path
     click_on 'Copacabana'
 
