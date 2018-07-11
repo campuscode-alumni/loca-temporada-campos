@@ -6,63 +6,83 @@
   <% end %>
 </ul>
 
-<%= form_for @property do |f| %>
+<%= form_for @property, html: { multipart: true } do |f| %>
+
   <div class="form-group">
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :description, 'Descrição' %>
     <%= f.text_field :description, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :property_type_id, 'Tipo do imóvel' %>
     <%= f.collection_select(:property_type_id, @property_types, :id, :name, {}, { class: 'form-control' }) %>
   </div>
+
   <div class="form-group">
     <%= f.label :region_id, 'Região' %>
     <%= f.collection_select(:region_id, @regions, :id, :name, {}, { class: 'form-control' }) %>
   </div>
+
   <div class="form-group">
     <%= f.label :rent_purpose, 'Finalidade do imóvel' %>
     <%= f.text_field :rent_purpose, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :area, 'Área' %>
     <%= f.number_field :area, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :room_quantity, 'Quantidade de cômodos' %>
     <%= f.number_field :room_quantity, class: 'form-control' %>
   </div>
+
   <div class="form-check">
     <%= f.check_box :accessibility, class: 'form-check-input' %>
     <%= f.label :accessibility, 'Possui acessibilidade', class: 'form-check-label' %>
   </div>
+
   <div class="form-check">
     <%= f.check_box :allow_pets, class: 'form-check-input' %>
     <%= f.label :allow_pets, 'Aceita animais', class: 'form-check-label' %>
   </div>
+
   <div class="form-check">
     <%= f.check_box :allow_smokers, class: 'form-check-input' %>
     <%= f.label :allow_smokers, 'Aceita fumantes', class: 'form-check-label' %>
   </div>
+
   <div class="form-group">
     <%= f.label :maximum_guests, 'Ocupação máxima' %>
     <%= f.number_field :maximum_guests, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :minimum_rent, 'Mínimo de diárias' %>
     <%= f.number_field :minimum_rent, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :maximum_rent, 'Máximo de diárias' %>
     <%= f.number_field :maximum_rent, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :daily_rate, 'Valor da diária' %>
     <%= f.number_field :daily_rate, step: 0.01, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :main_photo, 'Foto' %>
+    <%= f.file_field :main_photo, class: 'form-control' %>
+  </div>
+
   <div class="form-group">
     <%= f.submit 'Cadastrar', class: 'btn btn-primary' %>
   <% end %>

@@ -21,6 +21,7 @@ feature 'Register Property' do
     fill_in 'Mínimo de diárias', with: 1
     fill_in 'Máximo de diárias', with: 20
     fill_in 'Valor da diária', with: '500.50'
+    attach_file 'Foto', Rails.root.join('spec', 'support','apartment.jpg')
     click_on 'Cadastrar'
 
     expect(page).to have_css('p', text: 'Imóvel cadastrado com sucesso')
@@ -38,6 +39,7 @@ feature 'Register Property' do
     expect(page).to have_css('li', text: '1')
     expect(page).to have_css('li', text: '20')
     expect(page).to have_css('li', text: 'R$ 500.5')
+    expect(page).to have_css("img[src*='apartment.jpg']")
   end
 
   scenario 'and leave blank fields' do
@@ -55,5 +57,6 @@ feature 'Register Property' do
     expect(page).to have_content('Minimum rent não pode ficar em branco')
     expect(page).to have_content('Maximum rent não pode ficar em branco')
     expect(page).to have_content('Daily rate não pode ficar em branco')
+    expect(page).to have_content('Adicione uma foto')
   end
 end
