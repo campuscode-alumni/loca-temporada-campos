@@ -1,5 +1,5 @@
 <h1><%= @region.name %></h1>
-
+<%= flash[:error] %>
 <% @region.properties.each do |property| %>
   <h2><%= property.title %></h2>
   <p><%= property.maximum_guests %></p>

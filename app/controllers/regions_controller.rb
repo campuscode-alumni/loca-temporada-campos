@@ -3,6 +3,10 @@ class RegionsController < ApplicationController
 
   def show
     @region = Region.find(params[:id])
+    if @region.properties.empty?
+      flash[:error] = 'Nenhum imovel para esta região'
+    end
+    
   end
 
   def new
