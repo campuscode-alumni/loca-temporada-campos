@@ -1,1 +1,7 @@
 <h1><%= @region.name %></h1>
+
+<% @region.properties.each do |property| %>
+  <h2><%= property.title %></h2>
+  <p><%= property.maximum_guests %></p>
+  <p><%= property.property_type.name %></p>
+<% end %>

@@ -1,6 +1,10 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show]
 
+  def index
+    @regions = Region.all
+  end
+  
   def show; end
 
   def new

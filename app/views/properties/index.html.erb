@@ -1,3 +1,9 @@
 Bem-vindo ao aluga temporada!
 
+<ul>
+  <% @regions.each do |region| %>
+    <li><%= link_to region.name, region %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Cadastrar Imóvel', new_property_path %>
