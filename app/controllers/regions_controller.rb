@@ -1,7 +1,13 @@
 class RegionsController < ApplicationController
   before_action :set_region, only: [:show]
 
-  def show; end
+  def show
+    @region = Region.find(params[:id])
+    if @region.properties.empty?
+      flash[:error] = 'Nenhum imovel para esta região'
+    end
+    
+  end
 
   def new
     @region = Region.new
