@@ -25,6 +25,7 @@ feature 'Search by reagion' do
     expect(page).to have_css('h2', text: casa.title)
     expect(page).to have_css('p', text: casa.maximum_guests)
     expect(page).to have_css('p', text: casa.property_type.name)
+    expect(page).to have_css("img[src*='apartment.jpg']")
     
     expect(page).to_not have_css('h1', text: paulista.name)
     expect(page).to_not have_css('h2', text: apartamento.title)
@@ -63,11 +64,13 @@ feature 'Search by reagion' do
     expect(page).to have_css('h2', text: casa.title)
     expect(page).to have_css('p', text: casa.maximum_guests)
     expect(page).to have_css('p', text: casa.property_type.name)
+    expect(page).to have_css("img[src*='apartment.jpg']")
     
     expect(page).to have_css('h1', text: copacabana.name)
     expect(page).to have_css('h2', text: apartamento.title)
     expect(page).to have_css('p', text: apartamento.maximum_guests)
     expect(page).to have_css('p', text: apartamento.property_type.name)
+    expect(page).to have_css("img[src*='apartment.jpg']")
   
   end
 
