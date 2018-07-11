@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
+  # before_action :authenticate_user!, except: [:show]
   before_action :set_property, only: [:show]
+  
 
   def index
     @regions = Region.all
