@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_004133) do
+ActiveRecord::Schema.define(version: 2018_07_13_005441) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 2018_07_12_004133) do
     t.date "end_date"
     t.decimal "total_amount"
     t.integer "total_guests"
-    t.string "guest_name"
-    t.string "email"
     t.string "phone"
     t.text "rent_purpose"
     t.boolean "pet"
@@ -58,7 +56,9 @@ ActiveRecord::Schema.define(version: 2018_07_12_004133) do
     t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["property_id"], name: "index_proposals_on_property_id"
+    t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
   create_table "regions", force: :cascade do |t|

@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'show proposal' do
   scenario 'successfully' do
+
+    user = User.create(email:'teste@teste.com', password: '1231231')
     property_type = PropertyType.create(name: 'Apartamento')
     region = Region.create(name: 'Ceará')
     property = Property.create(title: 'Apartamento bonito', 
@@ -25,8 +27,7 @@ feature 'show proposal' do
                                 end_date: '15-10-2017',
                                 total_amount: 20,
                                 total_guests: 20,
-                                guest_name: 'teste',
-                                email: 'teste@teste.com',
+                                user: user,
                                 phone: '659546654', 
                                 rent_purpose: 'férias', 
                                 pet: true, 
@@ -37,18 +38,17 @@ feature 'show proposal' do
     visit root_path
     click_on 'Ver propostas'
 
-    expect(page).to have_css('li', text: proposal.guest_name)
-    expect(page).to have_css('li', text: proposal.email)
-    expect(page).to have_css('li', text: proposal.created_at)
-    expect(page).to have_css('li', text: proposal.start_date)
-    expect(page).to have_css('li', text: proposal.end_date)
-    expect(page).to have_css('li', text: proposal.pet)
-    expect(page).to have_css('li', text: proposal.rent_purpose)
-    expect(page).to have_css('li', text: proposal.total_amount)
+    expect(page).to have_css('dd', text: proposal.user.email)
+    expect(page).to have_css('dd', text: proposal.created_at)
+    expect(page).to have_css('dd', text: proposal.start_date)
+    expect(page).to have_css('dd', text: proposal.end_date)
+    expect(page).to have_css('dd', text: proposal.pet)
+    expect(page).to have_css('dd', text: proposal.rent_purpose)
+    expect(page).to have_css('dd', text: proposal.total_amount)
   end
 
   scenario 'show message without proposals' do
-
+    user = User.create(email: 'teste@teste.com', password: '123456')
     property_type = PropertyType.create(name: 'Apartamento')
     region = Region.new(name: 'Ceará')
     property = Property.new(title: 'Apartamento bonito', 
@@ -72,8 +72,7 @@ feature 'show proposal' do
                                 end_date: '15-10-2017',
                                 total_amount: 20,
                                 total_guests: 20,
-                                guest_name: 'teste',
-                                email: 'teste@teste.com',
+                                user: user,
                                 phone: '659546654', 
                                 rent_purpose: 'férias', 
                                 pet: true, 
@@ -85,7 +84,7 @@ feature 'show proposal' do
     click_on 'Ver propostas'
 
     expect(page).to have_content('Não existem propostas cadastradas')
-    expect(page).not_to have_css('li', text: proposal.guest_name)
+    expect(page).not_to have_css('dd', text: proposal.user.email)
 
   end
 end

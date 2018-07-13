@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  def index  
+  def index 
     @proposals = Proposal.all
     if @proposals.empty?
       flash[:alert] = 'Não existem propostas cadastradas'   
