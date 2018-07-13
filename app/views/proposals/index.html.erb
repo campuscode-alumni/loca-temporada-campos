@@ -1,0 +1,18 @@
+<% @proposals.each do |proposal| %>
+  <dl>
+    <dt>Email do Usuário: </dt>
+    <dd> <%= proposal.user.email %> </dd>
+    <dt>Data de criação: </dt>    
+    <dd> <%= proposal.created_at %> </dd>
+    <dt>Data inicial da locação: </dt>
+    <dd> <%= proposal.start_date %> </dd>
+    <dt>Data final de locação: </dt>
+    <dd> <%= proposal.end_date %> </dd>
+    <dt>Vai levar animais? </dt>
+    <dd> <%= proposal.pet %> </dd>
+    <dt>Motivo da locação: </dt>
+    <dd> <%= proposal.rent_purpose %> </dd>
+    <dt>Valor total da locação: </dt>
+    <dd> <%= proposal.total_amount %> </dd>
+  </dl>
+<% end%>
