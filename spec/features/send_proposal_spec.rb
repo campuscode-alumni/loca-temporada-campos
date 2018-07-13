@@ -33,10 +33,23 @@ feature 'send proposal' do
 
     all_proposals = Proposal.all
     expect(all_proposals.count).to eq 1
-    
-    
-    
+  end
 
+  scenario 'with not logged user' do
+
+    duartina = Region.create(name: 'Duartina')
+    property_type_casa = PropertyType.create(name: 'Casa')
+    casa = Property.create(title: 'Casa', description: 'Casa na praia',
+                            property_type: property_type_casa, region: duartina,
+                            rent_purpose: 'Festa', area: '100', room_quantity:'3',
+                            accessibility: true, maximum_guests:'1', minimum_rent: 5,
+                            maximum_rent: 10, daily_rate: 150,main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
+
+    visit root_path
+    click_on 'Duartina'
+    click_on 'Proposta'
+
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 
 end

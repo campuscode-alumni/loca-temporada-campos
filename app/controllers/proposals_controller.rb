@@ -1,5 +1,7 @@
 class ProposalsController < ApplicationController
-
+  
+  before_action :authenticate_user!
+  
   def new
     property_id = params[:property_id]
     @property = Property.find(property_id)
