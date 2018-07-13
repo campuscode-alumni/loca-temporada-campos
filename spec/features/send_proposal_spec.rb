@@ -23,12 +23,16 @@ feature 'send proposal' do
 
     fill_in 'Data de chegada', with: '01/30/2018'
     fill_in 'Data de saída', with: '02/28/2018'
-    fill_in 'Número de hóspedes'
-    fill_in 'Finalidade da proposta', with: ''
+    fill_in 'Número de hóspedes', with: '2'
+    fill_in 'Finalidade da proposta', with: 'Festa'
     check 'Animal'
     uncheck 'Fumante'
     click_on 'Enviar'
 
+    expect(page).to have_content('Enviado')
+
+    all_proposals = Proposal.all
+    expect(all_proposals.count).to eq 1
     
     
     

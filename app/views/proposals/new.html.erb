@@ -1,0 +1,15 @@
+<%= form_for([@property, @proposal]) do |f| %>
+  <%= f.label :start_date, 'Data de chegada' %>
+  <%= f.text_field :start_date %>
+  <%= f.label :end_date, 'Data de saída' %>
+  <%= f.text_field :end_date %>
+  <%= f.label :total_guests, 'Número de hóspedes' %>
+  <%= f.text_field :total_guests %>
+  <%= f.label :rent_purpose, 'Finalidade da proposta' %>
+  <%= f.text_field :rent_purpose %>
+  <%= f.label :pet, 'Animal' %>
+  <%= f.check_box :pet %>
+  <%= f.label :smoker, 'Fumante' %>
+  <%= f.check_box :smoker %>
+  <%= f.submit 'Enviar' %>
+<% end %> 

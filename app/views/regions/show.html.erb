@@ -5,4 +5,5 @@
   <h2><%= property.title %></h2>
   <p><%= property.maximum_guests %></p>
   <p><%= property.property_type.name %></p>
+  <%= link_to 'Proposta', new_property_proposal_path(property.id) %>
 <% end %>
