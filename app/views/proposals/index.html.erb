@@ -1,0 +1,16 @@
+
+<%= flash[:alert] %>
+
+<% @proposals.each do |proposal| %>
+  <ul>
+    <li> <%= proposal.guest_name %> </li>
+    <li> <%= proposal.email %> </li>
+    <li> <%= proposal.created_at %> </li>
+    <li> <%= proposal.start_date %> </li>
+    <li> <%= proposal.end_date %> </li>
+    <li> <%= proposal.pet %> </li>
+    <li> <%= proposal.rent_purpose %> </li>
+    <li> <%= proposal.total_amount %> </li>
+    <li
+  </ul>
+<% end%>
