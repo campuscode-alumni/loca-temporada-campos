@@ -27,6 +27,12 @@ class ProposalsController < ApplicationController
       flash[:alert] = 'Não existem propostas cadastradas'   
     end
   end
+
+  def show
+      #Terminar a parte de validar aprovação do status#
+    #TODO
+  end
+
 end
 
 
