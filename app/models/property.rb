@@ -1,7 +1,7 @@
 class Property < ApplicationRecord
   belongs_to :property_type
   belongs_to :region
-
+  belongs_to :realtor
   has_many :proposals
 
   validates :title, :room_quantity, :maximum_guests, :minimum_rent,

@@ -2,10 +2,16 @@ require 'rails_helper'
 
 feature 'Register Property' do
   scenario 'successfully' do
+    realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     region = Region.create(name: 'Copacabana')
     property_type = PropertyType.create(name: 'Apartamento')
 
     visit root_path
+    click_on 'Entrar como corretor'
+    fill_in 'Email', with: realtor.email
+    fill_in 'Senha', with: realtor.password
+    click_on 'Acessar'
+
     click_on 'Cadastrar imóvel'
     fill_in 'Título', with: 'Lindo apartamento 100m da praia'
     fill_in 'Descrição', with: 'Um apartamento excelente para férias'
@@ -40,6 +46,9 @@ feature 'Register Property' do
     expect(page).to have_css('li', text: '20')
     expect(page).to have_css('li', text: 'R$ 500.5')
     expect(page).to have_css("img[src*='apartment.jpg']")
+    
+    property = Property.last
+    expect(property.realtor.email).to eq realtor.email
   end
 
   scenario 'and leave blank fields' do
