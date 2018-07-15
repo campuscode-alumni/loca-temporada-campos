@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
-  # before_action :authenticate_user!, except: [:show]
-  before_action :set_property, only: [:show]
-  
+  before_action :authenticate_realtor!, only: [:edit, :update]
+  before_action :set_property, only: [:show, :edit, :update]
+  before_action :load_dependencies, only: [:new, :edit]
 
   def index
     @regions = Region.all
@@ -11,8 +11,6 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    @regions = Region.all
-    @property_types = PropertyType.all
   end
 
   def create
@@ -22,9 +20,21 @@ class PropertiesController < ApplicationController
       redirect_to @property
     else
       flash[:alert] = 'Você deve preencher todos os campos'
-      @regions = Region.all
-      @property_types = PropertyType.all
+      load_dependencies
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @property.update(property_params)
+      flash[:success] = 'Imóvel alterado com sucesso'
+      redirect_to @property
+    else
+      load_dependencies
+      flash[:alert] = 'Você deve preencher todos os campos'
+      render :edit
     end
   end
 
@@ -42,4 +52,10 @@ class PropertiesController < ApplicationController
                                      :maximum_guests, :minimum_rent,
                                      :maximum_rent, :daily_rate, :main_photo)
   end
+
+  def load_dependencies
+    @regions = Region.all
+    @property_types = PropertyType.all
+  end
+
 end
