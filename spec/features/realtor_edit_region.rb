@@ -48,4 +48,12 @@ feature 'Realtor edit region' do
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 
+  scenario 'and not see edit link' do
+    praia_grande = Region.create(name: 'Praia Grande')
+
+    visit region_path(praia_grande.id)
+
+    expect(page).to_not have_content('Editar')
+  end
+
 end
