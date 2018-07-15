@@ -3,11 +3,9 @@ class RegionsController < ApplicationController
   before_action :authenticate_realtor!, only: [:edit, :update]
 
   def show
-    @region = Region.find(params[:id])
     if @region.properties.empty?
       flash[:error] = 'Nenhum imovel para esta região'
     end
-    
   end
 
   def new
