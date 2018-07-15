@@ -2,10 +2,16 @@ require 'rails_helper'
 
 feature 'Register Property' do
   scenario 'successfully' do
+    corretor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     region = Region.create(name: 'Copacabana')
     property_type = PropertyType.create(name: 'Apartamento')
 
     visit root_path
+    click_on 'Entrar como corretor'
+    fill_in 'Email', with: corretor.email
+    fill_in 'Senha', with: corretor.password
+    click_on 'Acessar'
+
     click_on 'Cadastrar imóvel'
     fill_in 'Título', with: 'Lindo apartamento 100m da praia'
     fill_in 'Descrição', with: 'Um apartamento excelente para férias'
@@ -43,10 +49,16 @@ feature 'Register Property' do
   end
 
   scenario 'and leave blank fields' do
+    corretor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     Region.create(name: 'Copacabana')
     PropertyType.create(name: 'Apartamento')
 
     visit root_path
+    click_on 'Entrar como corretor'
+    fill_in 'Email', with: corretor.email
+    fill_in 'Senha', with: corretor.password
+    click_on 'Acessar'
+
     click_on 'Cadastrar imóvel'
     click_on 'Cadastrar'
 
@@ -58,5 +70,14 @@ feature 'Register Property' do
     expect(page).to have_content('Maximum rent não pode ficar em branco')
     expect(page).to have_content('Daily rate não pode ficar em branco')
     expect(page).to have_content('Adicione uma foto')
+  end
+
+  scenario 'and must be logged as realtor' do
+    Region.create(name: 'Copacabana')
+    PropertyType.create(name: 'Apartamento')
+
+    visit new_property_path
+
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end

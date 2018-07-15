@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_realtor!, only: [:edit, :update]
+  before_action :authenticate_realtor!, only: [:new, :create, :edit, :update]
   before_action :set_property, only: [:show, :edit, :update]
   before_action :load_dependencies, only: [:new, :edit]
 
