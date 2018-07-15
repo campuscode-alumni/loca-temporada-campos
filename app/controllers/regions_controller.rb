@@ -1,6 +1,6 @@
 class RegionsController < ApplicationController
   before_action :set_region, only: [:show, :edit, :update]
-  before_action :authenticate_realtor!, only: [:edit, :update]
+  before_action :authenticate_realtor!, only: [:new, :create, :edit, :update]
 
   def show
     if @region.properties.empty?
