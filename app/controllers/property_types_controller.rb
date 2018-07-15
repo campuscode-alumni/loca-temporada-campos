@@ -1,5 +1,6 @@
 class PropertyTypesController < ApplicationController
-  before_action :set_property_type, only: [:show]
+  before_action :set_property_type, only: [:show, :edit, :update]
+  before_action :authenticate_realtor!, only: [:new, :create, :edit, :update]
 
   def show; end
 
@@ -15,6 +16,18 @@ class PropertyTypesController < ApplicationController
     else
       flash[:alert] = 'Você deve preencher todos os campos'
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @property_type.update(property_type_params)
+      flash[:success] = 'Tipo do imóvel alterado com sucesso'
+      redirect_to @property_type
+    else
+      flash[:alert] = 'Você deve preencher todos os campos'
+      render :edit
     end
   end
 
