@@ -1,5 +1,6 @@
 class RegionsController < ApplicationController
-  before_action :set_region, only: [:show]
+  before_action :set_region, only: [:show, :edit, :update]
+  before_action :authenticate_realtor!, only: [:edit, :update]
 
   def show
     @region = Region.find(params[:id])
@@ -21,6 +22,19 @@ class RegionsController < ApplicationController
     else
       flash[:alert] = 'Você deve preencher todos os campos'
       render :new
+    end
+  end
+
+  def edit
+    @region
+  end
+
+  def update
+    if @region.update(region_params)
+      redirect_to @region
+    else
+      flash[:alert] = 'Você deve preencher todos os campos'
+      render :edit
     end
   end
 
