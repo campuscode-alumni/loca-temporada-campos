@@ -11,10 +11,10 @@ class PropertyTypesController < ApplicationController
   def create
     @property_type = PropertyType.new(property_type_params)
     if @property_type.save
-      flash[:success] = 'Tipo do imóvel cadastrado com sucesso'
+      flash[:success] = t('.success')
       redirect_to @property_type
     else
-      flash[:alert] = 'Você deve preencher todos os campos'
+      flash[:alert] = t('.fail')
       render :new
     end
   end
@@ -23,10 +23,10 @@ class PropertyTypesController < ApplicationController
 
   def update
     if @property_type.update(property_type_params)
-      flash[:success] = 'Tipo do imóvel alterado com sucesso'
+      flash[:success] = t('.success')
       redirect_to @property_type
     else
-      flash[:alert] = 'Você deve preencher todos os campos'
+      flash[:alert] = t('.fail')
       render :edit
     end
   end

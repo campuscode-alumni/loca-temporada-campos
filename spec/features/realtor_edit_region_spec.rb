@@ -18,6 +18,7 @@ feature 'Realtor edit region' do
     fill_in 'Nome', with: 'Praia Grande SP'
     click_on 'Alterar'
 
+    expect(page).to have_content('Região alterada com sucesso')
     expect(page).to have_css('h1', text: 'Praia Grande SP')
   end
 

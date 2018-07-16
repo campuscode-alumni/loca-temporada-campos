@@ -16,10 +16,10 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     if @property.save
-      flash[:success] = 'Imóvel cadastrado com sucesso'
+      flash[:success] = t('.success')
       redirect_to @property
     else
-      flash[:alert] = 'Você deve preencher todos os campos'
+      flash[:alert] = t('.fail')
       load_dependencies
       render :new
     end
@@ -29,11 +29,11 @@ class PropertiesController < ApplicationController
 
   def update
     if @property.update(property_params)
-      flash[:success] = 'Imóvel alterado com sucesso'
+      flash[:success] = t('.success')
       redirect_to @property
     else
       load_dependencies
-      flash[:alert] = 'Você deve preencher todos os campos'
+      flash[:alert] = t('.fail')
       render :edit
     end
   end
