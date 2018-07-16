@@ -84,5 +84,13 @@ feature 'Search by reagion' do
   
   end
 
+  scenario 'and not see edit button' do
+    praia_grande = Region.create(name: 'Praia Grande')
+
+    visit root_path
+    click_on 'Praia Grande'
+
+    expect(page).to_not have_content('Editar')
+  end
 
 end

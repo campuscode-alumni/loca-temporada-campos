@@ -1,12 +1,11 @@
 class RegionsController < ApplicationController
-  before_action :set_region, only: [:show]
+  before_action :set_region, only: [:show, :edit, :update]
+  before_action :authenticate_realtor!, only: [:new, :create, :edit, :update]
 
   def show
-    @region = Region.find(params[:id])
     if @region.properties.empty?
-      flash[:error] = 'Nenhum imovel para esta região'
+      flash[:notice] = t('.notice')
     end
-    
   end
 
   def new
@@ -16,11 +15,25 @@ class RegionsController < ApplicationController
   def create
     @region = Region.new(region_params)
     if @region.save
-      flash[:success] = 'Região cadastrada com sucesso'
+      flash[:success] = t('.success')
       redirect_to @region
     else
-      flash[:alert] = 'Você deve preencher todos os campos'
+      flash[:alert] = t('.fail')
       render :new
+    end
+  end
+
+  def edit
+    @region
+  end
+
+  def update
+    if @region.update(region_params)
+      flash[:success] = t('.success')
+      redirect_to @region
+    else
+      flash[:alert] = t('.fail')
+      render :edit
     end
   end
 
