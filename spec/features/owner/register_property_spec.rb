@@ -2,23 +2,14 @@ require 'rails_helper'
 
 feature 'Register Property' do
   scenario 'successfully' do
-<<<<<<< HEAD
     realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
-=======
-    corretor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
->>>>>>> 72bab3d1622f028dddaa26ee188107fc36ef5d1e
     region = Region.create(name: 'Copacabana')
     property_type = PropertyType.create(name: 'Apartamento')
 
     visit root_path
     click_on 'Entrar como corretor'
-<<<<<<< HEAD
     fill_in 'Email', with: realtor.email
     fill_in 'Senha', with: realtor.password
-=======
-    fill_in 'Email', with: corretor.email
-    fill_in 'Senha', with: corretor.password
->>>>>>> 72bab3d1622f028dddaa26ee188107fc36ef5d1e
     click_on 'Acessar'
 
     click_on 'Cadastrar imóvel'

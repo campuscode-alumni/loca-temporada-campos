@@ -23,9 +23,7 @@ class RegionsController < ApplicationController
     end
   end
 
-  def edit
-    @region
-  end
+  def edit; end
 
   def update
     if @region.update(region_params)

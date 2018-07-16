@@ -11,7 +11,8 @@ feature 'Realtor edit property' do
                               rent_purpose: 'Casamento', area: '500', room_quantity:'10',
                               accessibility: true, maximum_guests:'12', minimum_rent: 5,
                               maximum_rent: 10, daily_rate: 1000, 
-                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
+                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
+                              realtor: corretor)
 
     visit root_path
     click_on 'Entrar como corretor'
@@ -61,7 +62,8 @@ feature 'Realtor edit property' do
                               rent_purpose: 'Casamento', area: '500', room_quantity:'10',
                               accessibility: true, maximum_guests:'12', minimum_rent: 5,
                               maximum_rent: 10, daily_rate: 1000, 
-                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
+                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
+                              realtor: corretor)
 
     visit root_path
     click_on 'Entrar como corretor'
@@ -88,7 +90,8 @@ feature 'Realtor edit property' do
                               rent_purpose: 'Casamento', area: '500', room_quantity:'10',
                               accessibility: true, maximum_guests:'12', minimum_rent: 5,
                               maximum_rent: 10, daily_rate: 1000, 
-                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
+                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
+                              realtor: corretor)
 
     visit edit_property_path(bela_mansao_jardins.id)
 
@@ -104,7 +107,8 @@ feature 'Realtor edit property' do
                               rent_purpose: 'Casamento', area: '500', room_quantity:'10',
                               accessibility: true, maximum_guests:'12', minimum_rent: 5,
                               maximum_rent: 10, daily_rate: 1000, 
-                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')))
+                              main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
+                              realtor: corretor)
 
     visit property_path(bela_mansao_jardins.id)
 
