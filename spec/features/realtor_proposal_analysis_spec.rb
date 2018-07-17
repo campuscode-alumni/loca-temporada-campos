@@ -33,7 +33,8 @@ feature 'show proposal' do
                                 pet: true, 
                                 smoker: true, 
                                 details: 'Testando proposta', 
-                                property: property)
+                                property: property,
+                                status: 'pending')
     
     visit root_path
     click_on 'Ver propostas'

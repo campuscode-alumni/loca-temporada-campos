@@ -76,18 +76,14 @@ feature 'Proposal approvement' do
                                   smoker: true, 
                                   details: 'cachorros que fumam', 
                                   property: property,
-                                  status: 'approved')
+                                  status: 'pending')
 
-    #  Terminar o cenário com uma proposta de status pendente
-    
     visit root_path
     click_on 'Ver propostas'
+    click_on 'Detalhes'
+    click_on 'Aprovar'
     
-
-    expect(page).not_to have_content(proposal.start_date)
-    expect(page).not_to have_content(proposal.end_date)
-    expect(page).not_to have_content(proposal.rent_purpose)
-    expect(page).not_to have_content(proposal.status)
-                                        
+    expect(page).not_to have_content('10-06-2018')
+    expect(page).not_to have_content('Festa de aniversário canina')                      
   end
 end

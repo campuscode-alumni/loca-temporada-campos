@@ -22,15 +22,15 @@ class ProposalsController < ApplicationController
   end
 
   def index 
-    @proposals = Proposal.all
+    @proposals = Proposal.pending
+
     if @proposals.empty?
       flash[:alert] = 'Não existem propostas cadastradas'   
     end
+
   end
 
-  def show
-      #Terminar a parte de validar aprovação do status#
-    
+  def show      
 
   end
 
@@ -39,7 +39,6 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     @proposal.approved!
     redirect_to proposals_path, notice: 'Proposta aprovado com sucesso!'
-    
 
   end
 
