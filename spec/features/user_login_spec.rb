@@ -11,7 +11,7 @@ feature 'user login' do
     fill_in 'Senha', with: user.password
     click_on 'Acessar'
 
-    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content('Login efetuado com sucesso.')
   end
 
   scenario 'do not log in with invalid email' do
@@ -24,6 +24,6 @@ feature 'user login' do
     fill_in 'Senha', with: user.password
     click_on 'Acessar'
 
-    expect(page).to have_content('Invalid Email or password.')
+    expect(page).to have_content('Invalido Email ou senha')
   end
 end

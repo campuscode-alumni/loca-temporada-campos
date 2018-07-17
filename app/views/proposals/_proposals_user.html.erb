@@ -8,7 +8,7 @@
                 <dt>Email do Usuário: </dt>
                 <dd> <%= proposal.user.email %> </dd>
                 <dt>Data de criação: </dt>    
-                <dd> <%= proposal.created_at %> </dd>
+                <dd> <%= I18n.l proposal.created_at, format: :short %> </dd>
                 <dt>Data inicial da locação: </dt>
                 <dd> <%= proposal.start_date %> </dd>
                 <dt>Data final de locação: </dt>

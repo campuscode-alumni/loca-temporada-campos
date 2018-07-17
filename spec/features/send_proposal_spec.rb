@@ -49,7 +49,7 @@ feature 'send proposal' do
     click_on 'Duartina'
     click_on 'Proposta'
 
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("Para continuar, faça login ou registre-se.")
   end
 
 end

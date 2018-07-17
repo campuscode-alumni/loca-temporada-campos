@@ -24,7 +24,8 @@ class ProposalsController < ApplicationController
   def index 
     @proposals = Proposal.all
     if @proposals.empty?
-      flash[:alert] = 'Não existem propostas cadastradas'   
+      flash[:alert] = 'Não existem propostas cadastradas'  
+      redirect_to root_path
     end
   end
 end
