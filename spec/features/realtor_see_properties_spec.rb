@@ -32,8 +32,8 @@ feature 'realtor only visualize its properties' do
 
         expect(page).to have_css('h1', text: property.title)
         expect(page).to have_css('p', text: property.description)
-        expect(page).to have_css('p', text: property.property_type)
-        expect(page).to have_css('h1', text: property.region)
+        expect(page).to have_css('p', text: property.property_type.name)
+        expect(page).to have_css('h1', text: property.region.name)
         expect(page).to have_css("img[src*='apartment.jpg']")
         expect(page).to have_css('p', text: property.area)
         expect(page).to have_css('p', text: property.room_quantity)
@@ -44,7 +44,7 @@ feature 'realtor only visualize its properties' do
         expect(page).to have_css('p', text: property.accessibility)
         expect(page).to have_css('p', text: property.allow_pets)
         expect(page).to have_css('p', text: property.allow_smokers)
-        expect(page).to have_css('p', text: property.realtor)
+        expect(page).to have_css('p', text: property.realtor.email)
 
     end
 

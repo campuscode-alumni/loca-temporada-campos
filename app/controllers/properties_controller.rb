@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  # before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_realtor!, only: [:new]
   before_action :set_property, only: [:show]
   
 
@@ -17,6 +17,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @property.realtor = current_realtor
     if @property.save
       flash[:success] = 'Imóvel cadastrado com sucesso'
       redirect_to @property
