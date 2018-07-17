@@ -22,12 +22,27 @@ class ProposalsController < ApplicationController
   end
 
   def index 
-    @proposals = Proposal.all
+    @proposals = Proposal.pending
+
     if @proposals.empty?
       flash[:alert] = 'Não existem propostas cadastradas'  
-      redirect_to root_path
+      
     end
+
   end
+
+  def show      
+
+  end
+
+  def approve
+
+    @proposal = Proposal.find(params[:id])
+    @proposal.approved!
+    redirect_to proposals_path, notice: 'Proposta aprovado com sucesso!'
+
+  end
+
 end
 
 
