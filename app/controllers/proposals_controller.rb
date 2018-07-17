@@ -30,7 +30,17 @@ class ProposalsController < ApplicationController
 
   def show
       #Terminar a parte de validar aprovação do status#
-    #TODO
+    
+
+  end
+
+  def approve
+
+    @proposal = Proposal.find(params[:id])
+    @proposal.approved!
+    redirect_to proposals_path, notice: 'Proposta aprovado com sucesso!'
+    
+
   end
 
 end

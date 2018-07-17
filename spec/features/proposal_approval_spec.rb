@@ -40,8 +40,8 @@ feature 'Proposal approvement' do
     click_on 'Aprovar'
                 
     proposal.reload
-    expect(proposal.status).to eq 'approved'
+    expect(proposal.approved?).to eq true
     expect(current_path).to eq proposals_path
-    expect(page).to have_css('h1', text: 'Proposta Pendente')
+    expect(page).to have_content('Proposta aprovado com sucesso!')
   end
 end
