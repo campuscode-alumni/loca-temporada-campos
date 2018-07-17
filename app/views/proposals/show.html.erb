@@ -1,0 +1,21 @@
+<div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"> <%= proposal.property.title %></h5>
+            <dl>
+                <dt>Email do Usuário: </dt>
+                <dd> <%= proposal.user.email %> </dd>
+                <dt>Data de criação: </dt>    
+                <dd> <%= I18n.l proposal.created_at, format: :short %> </dd>
+                <dt>Data inicial da locação: </dt>
+                <dd> <%= proposal.start_date %> </dd>
+                <dt>Data final de locação: </dt>
+                <dd> <%= proposal.end_date %> </dd>
+                <dt>Vai levar animais? </dt>
+                <dd> <%= proposal.pet %> </dd>
+                <dt>Motivo da locação: </dt>
+                <dd> <%= proposal.rent_purpose %> </dd>
+                <dt>Valor total da locação: </dt>
+                <dd> <%= proposal.total_amount %> </dd>
+            </dl>
+        </div>
+    </div>

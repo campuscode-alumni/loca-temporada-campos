@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create] 
+  before_action :authenticate_user!, only: [:new, :create, :show] 
   
   def new
     property_id = params[:property_id]
@@ -15,10 +15,10 @@ class ProposalsController < ApplicationController
     @proposal.user= current_user
     if @proposal.save
       flash[:notice] = 'Enviado'
+      redirect_to @proposal
     else
       flash[:alert] = 'Erro'
     end
-    redirect_to root_path
   end
 
   def index 
@@ -27,6 +27,10 @@ class ProposalsController < ApplicationController
       flash[:alert] = 'Não existem propostas cadastradas'  
       redirect_to root_path
     end
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
   end
 end
 

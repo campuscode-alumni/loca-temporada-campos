@@ -12,7 +12,7 @@ feature 'send proposal' do
                             property_type: property_type_casa, region: duartina,
                             rent_purpose: 'Festa', area: '100', room_quantity:'3',
                             accessibility: true, maximum_guests:'1', minimum_rent: 5,
-                            maximum_rent: 10, daily_rate: 150,
+                            maximum_rent: 10, daily_rate: 100,
                             main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
                             realtor: realtor)
     visit root_path
@@ -28,14 +28,20 @@ feature 'send proposal' do
     fill_in 'Data de saída', with: '02/28/2018'
     fill_in 'Número de hóspedes', with: '2'
     fill_in 'Finalidade da proposta', with: 'Festa'
-    check 'Animal'
-    uncheck 'Fumante'
+    check 'Vai levar animais?'
+    uncheck 'Fumante?'
     click_on 'Enviar'
 
-    expect(page).to have_content('Enviado')
-
-    all_proposals = Proposal.all
-    expect(all_proposals.count).to eq 1
+    last_proposal = Proposal.last
+    expect(current_path).to eq (proposal_path(last_proposal.id))
+    expect(page).to have_content('Proposta enviada com sucesso')
+    expect(page).to have_css('h5', text: proposal.property.title)
+    expect(page).to have_content('Email do usuário: testeimersao@gmail.com')
+    expect(page).to have_content("Data de criação: #{I18n.l last_proposal.created_at}")
+    expect(page).to have_content('De 30/01/2018 até 28/02/2018')
+    expect(page).to have_content('Vai levar animais? Sim')
+    expect(page).to have_content('Finalidade da proposta: Festa')
+    expect(page).to have_content('Valor total da locação: R$ 2.900,00')
   end
 
   scenario 'with not logged user' do
