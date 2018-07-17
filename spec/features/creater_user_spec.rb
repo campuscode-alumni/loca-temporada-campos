@@ -10,9 +10,14 @@ feature 'user sing Uo' do
 
     fill_in 'Email', with: 'teste@teste.com.br'
     fill_in 'Password', with: '12345678'
+    fill_in 'Confirmar senha', with: '12345678'
     fill_in 'CPF', with:'11122233344'
+    click_on 'Acessar'
+    
+    
+    user = User.last
+    expect(user.cpf).to eq "11122233344"
 
-    expect root_path
 
     
 
