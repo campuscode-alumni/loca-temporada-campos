@@ -3,7 +3,7 @@
 <% @proposals.each do |proposal| %>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title"> <%= proposal.property.title %></h5>
             <dl>
                 <dt>Email do Usuário: </dt>
                 <dd> <%= proposal.user.email %> </dd>

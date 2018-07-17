@@ -33,6 +33,8 @@ feature 'User see own proposals' do
         click_on 'Minhas propostas'
 
         expect(page).to have_css('h3', text: 'Propostas enviadas')
+        expect(page).to have_css('h5', text: proposal.property.title)
+        
     end
 
     scenario 'user has no proposals' do
@@ -46,7 +48,8 @@ feature 'User see own proposals' do
         click_on 'Acessar'
         click_on 'Minhas propostas'
 
-        expect(page).to have_content('Não existem propostas cadastradas')  
+        expect(page).to have_content('Não existem propostas cadastradas')
+        expect(current_path).to eq   
     end
 
     scenario 'user are not signed in' do
