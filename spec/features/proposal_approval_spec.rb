@@ -3,9 +3,10 @@ require 'rails_helper'
 feature 'Proposal approvement' do
   scenario 'successfully' do
     user = User.create(email: 'realtor@admin.com', password: '123456')
-    property_type = PropertyType.create(name:'Casa de cachorro')
-                                        region = Region.create(name: 'Barueri')
-                                        property = Property.create(title: 'Casa grande com canil', 
+    realtor = Realtor.create(email: 'admin@admin.com.br', password: '123456')
+    property_type = PropertyType.create!(name:'Casa de cachorro')
+    region = Region.create(name: 'Barueri')
+    property = Property.create!(title: 'Casa grande com canil', 
                                         description: 'Faça a festa do seu cãozinho', 
                                         property_type: property_type, 
                                         region: region, 
@@ -19,7 +20,7 @@ feature 'Proposal approvement' do
                                         daily_rate: 160, 
                                         accessibility: false, 
                                         allow_pets: true, 
-                                        allow_smokers: true)
+                                        allow_smokers: true, realtor: realtor)
 
     proposal = Proposal.create(start_date: '10-06-2018', 
                                 end_date: '30-07-2018',
@@ -40,16 +41,17 @@ feature 'Proposal approvement' do
     click_on 'Aprovar'
                 
     proposal.reload
-    expect(proposal.approved?).to eq true
+    expect(proposal).to be_approved
     expect(current_path).to eq proposals_path
     expect(page).to have_content('Proposta aprovado com sucesso!')
   end
 
   scenario ' do not show proposal already approved' do
+    realtor = Realtor.create(email: 'admin@admin.com.br', password: '123456')
     user = User.create(email: 'realtor@admin.com', password: '123456')
     property_type = PropertyType.create(name:'Casa de cachorro')
-                                        region = Region.create(name: 'Barueri')
-                                        property = Property.create(title: 'Casa grande com canil', 
+    region = Region.create(name: 'Barueri')
+    property = Property.create(title: 'Casa grande com canil', 
                                         description: 'Faça a festa do seu cãozinho', 
                                         property_type: property_type, 
                                         region: region, 
@@ -63,7 +65,7 @@ feature 'Proposal approvement' do
                                         daily_rate: 160, 
                                         accessibility: false, 
                                         allow_pets: true, 
-                                        allow_smokers: true)
+                                        allow_smokers: true, realtor: realtor)
 
     proposal = Proposal.create(start_date: '10-06-2018', 
                                   end_date: '30-07-2018',

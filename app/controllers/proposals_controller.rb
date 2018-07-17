@@ -25,7 +25,8 @@ class ProposalsController < ApplicationController
     @proposals = Proposal.pending
 
     if @proposals.empty?
-      flash[:alert] = 'Não existem propostas cadastradas'   
+      flash[:alert] = 'Não existem propostas cadastradas'  
+      
     end
 
   end

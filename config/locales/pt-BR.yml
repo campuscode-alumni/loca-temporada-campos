@@ -1,0 +1,23 @@
+---
+pt-BR:
+  regions:
+    fail: Você deve preencher todos os campos
+    show:
+      notice: Nenhum imovel para esta região
+    create:
+      success: Região cadastrada com sucesso
+    update:
+      success: Região alterada com sucesso
+  property_types:
+    fail: Você deve preencher todos os campos
+    create:
+      success: Tipo do imóvel cadastrado com sucesso
+    update:
+      success: Tipo do imóvel alterado com sucesso
+  properties:
+    fail: Você deve preencher todos os campos
+    create:
+      success: Imóvel cadastrado com sucesso
+    update:
+      success: Imóvel alterado com sucesso
+        

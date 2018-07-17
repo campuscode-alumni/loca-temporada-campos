@@ -1,0 +1,15 @@
+<ul>
+<% @property_type.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+<%= form_for @property_type do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit button_text, class: 'btn btn-primary' %>
+  </div>
+<% end %>

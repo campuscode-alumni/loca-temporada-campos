@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_14_011018) do
+ActiveRecord::Schema.define(version: 2018_07_16_213721) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -33,7 +33,9 @@ ActiveRecord::Schema.define(version: 2018_07_14_011018) do
     t.string "main_photo_content_type"
     t.integer "main_photo_file_size"
     t.datetime "main_photo_updated_at"
+    t.integer "realtor_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+    t.index ["realtor_id"], name: "index_properties_on_realtor_id"
     t.index ["region_id"], name: "index_properties_on_region_id"
   end
 
@@ -62,6 +64,23 @@ ActiveRecord::Schema.define(version: 2018_07_14_011018) do
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
+  create_table "realtors", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_realtors_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_realtors_on_reset_password_token", unique: true
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -81,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_07_14_011018) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cpf"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -2,7 +2,7 @@
   <dl>
     <dt>Email do Usuário: </dt>
     <dd> <%= proposal.user.email %> </dd>
-    <dt>Data de criação: </dt>    
+    <dt>Data de criação: </dt>
     <dd> <%= proposal.created_at %> </dd>
     <dt>Data inicial da locação: </dt>
     <dd> <%= proposal.start_date %> </dd>
@@ -18,4 +18,4 @@
 
   <%= link_to 'Detalhes', proposal_path(proposal) %>
 <% end%>
-
+<%= render 'proposals/proposals_user' %>

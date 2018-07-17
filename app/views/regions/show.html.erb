@@ -1,4 +1,9 @@
 <h1><%= @region.name %></h1>
+
+<% if realtor_signed_in? %>
+  <p><%= link_to 'Editar', edit_region_path(@region) %></p>
+<% end %>
+
 <%= flash[:error] %>
 <% @region.properties.each do |property| %>
   <%= image_tag property.main_photo.url %>
