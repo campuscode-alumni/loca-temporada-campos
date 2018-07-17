@@ -2,10 +2,15 @@ require 'rails_helper'
 
 feature 'Register Property' do
   scenario 'successfully' do
+    realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     region = Region.create(name: 'Copacabana')
     property_type = PropertyType.create(name: 'Apartamento')
 
     visit root_path
+    click_on 'Entrar como corretor'
+    fill_in 'Email', with: realtor.email
+    fill_in 'Senha', with: realtor.password
+    click_on 'Acessar'
     click_on 'Cadastrar imóvel'
     fill_in 'Título', with: 'Lindo apartamento 100m da praia'
     fill_in 'Descrição', with: 'Um apartamento excelente para férias'
@@ -24,7 +29,7 @@ feature 'Register Property' do
     attach_file 'Foto', Rails.root.join('spec', 'support','apartment.jpg')
     click_on 'Cadastrar'
 
-    expect(page).to have_css('p', text: 'Imóvel cadastrado com sucesso')
+    expect(page).to have_content('Imóvel cadastrado com sucesso')
     expect(page).to have_css('h1', text: 'Lindo apartamento 100m da praia')
     expect(page).to have_css('p', text: 'Um apartamento excelente para férias')
     expect(page).to have_css('li', text: region.name)
@@ -40,13 +45,22 @@ feature 'Register Property' do
     expect(page).to have_css('li', text: '20')
     expect(page).to have_css('li', text: 'R$ 500.5')
     expect(page).to have_css("img[src*='apartment.jpg']")
+    
+    property = Property.last
+    expect(property.realtor.email).to eq realtor.email
   end
 
   scenario 'and leave blank fields' do
+    corretor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     Region.create(name: 'Copacabana')
     PropertyType.create(name: 'Apartamento')
 
     visit root_path
+    click_on 'Entrar como corretor'
+    fill_in 'Email', with: corretor.email
+    fill_in 'Senha', with: corretor.password
+    click_on 'Acessar'
+
     click_on 'Cadastrar imóvel'
     click_on 'Cadastrar'
 
@@ -57,6 +71,15 @@ feature 'Register Property' do
     expect(page).to have_content('Minimum rent não pode ficar em branco')
     expect(page).to have_content('Maximum rent não pode ficar em branco')
     expect(page).to have_content('Daily rate não pode ficar em branco')
-    expect(page).to have_content('Adicione uma foto')
+    expect(page).to have_content('Main photo não pode ficar em branco')
+  end
+
+  scenario 'and must be logged as realtor' do
+    Region.create(name: 'Copacabana')
+    PropertyType.create(name: 'Apartamento')
+
+    visit new_property_path
+
+    expect(page).to have_content('Para continuar, faça login ou registre-se.')
   end
 end

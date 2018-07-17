@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'show proposal' do
   scenario 'successfully' do
-
+    corretor = Realtor.create(email: 'corretor@teste.com', password: '123456')
     user = User.create(email:'teste@teste.com', password: '1231231')
     property_type = PropertyType.create(name: 'Apartamento')
     region = Region.create(name: 'Ceará')
@@ -21,7 +21,8 @@ feature 'show proposal' do
                                 daily_rate: 90, 
                                 accessibility: true,
                                 allow_pets: true, 
-                                allow_smokers: true)
+                                allow_smokers: true,
+                                realtor: corretor)
                                 
     proposal = Proposal.create(start_date: '10-10-2007',
                                 end_date: '15-10-2017',

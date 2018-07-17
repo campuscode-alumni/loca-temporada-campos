@@ -1,13 +1,3 @@
 <h1>Nova região</h1>
 
-<ul>
-<% @region.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-<% end %>
-</ul>
-
-<%= form_for @region do |f| %>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name %>
-  <%= f.submit 'Cadastrar' %>
-<% end %>
+<%= render 'form', button_text: 'Cadastrar' %>

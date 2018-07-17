@@ -1,0 +1,17 @@
+<% @properties.each do |property| %>
+  <h1><%= property.title%></h1>
+  <p><%= property.description%></p>
+  <p><%= property.property_type.name%></p>
+  <h1><%= property.region.name%></h1>
+  <p><%= property.area%></p>
+  <p><%= property.room_quantity%></p>
+  <p><%= property.maximum_guests%></p>
+  <p><%= property.minimum_rent%></p>
+  <p><%= property.maximum_rent%></p>
+  <%= image_tag property.main_photo.url %>
+  <p><%= property.daily_rate%></p>
+  <p><%= property.accessibility%></p>
+  <p><%= property.allow_pets%></p>
+  <p><%= property.allow_smokers%></p>
+  <p><%= property.realtor.email%></p>
+<% end %>

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'User see own proposals' do
     scenario 'successfully' do
+        corretor = Realtor.create(email: 'corretor@teste.com', password: '123456')
         user = User.create(email:'teste@teste.com', password:'123456')
         region = Region.create(name: 'Gramado')
         property_type = PropertyType.create(name: 'Apartamento')
@@ -14,7 +15,8 @@ feature 'User see own proposals' do
                                     accessibility: true, maximum_guests: 4,
                                     minimum_rent: 2, maximum_rent: 5,
                                     daily_rate: 350,
-                                    main_photo: File.new(Rails.root.join('spec', 'support','gramadoAP.jpg')))
+                                    main_photo: File.new(Rails.root.join('spec', 'support','gramadoAP.jpg')),
+                                    realtor: corretor)
 
         proposal = Proposal.create(start_date: '20-07-2018', 
                                     end_date: '30-07-2018', total_amount: 200, 
