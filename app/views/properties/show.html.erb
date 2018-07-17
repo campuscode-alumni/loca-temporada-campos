@@ -1,3 +1,7 @@
+<% if realtor_signed_in? %>
+  <%= link_to 'Editar', edit_property_path(@property) %>
+<% end %>
+
 <h1><%= @property.title %></h1>
 <p><%= @property.description %></p>
 <h3>Descrição do imóvel</h3>
@@ -15,4 +19,4 @@
   <li>Máximo de diárias: <%= @property.maximum_rent %></li>
   <li>Valor da diária: R$ <%= @property.daily_rate %></li>
 </ul>
-  <%= image_tag @property.main_photo.url %>
+<%= image_tag @property.main_photo.url %>

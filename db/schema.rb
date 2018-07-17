@@ -33,7 +33,9 @@ ActiveRecord::Schema.define(version: 2018_07_16_213721) do
     t.string "main_photo_content_type"
     t.integer "main_photo_file_size"
     t.datetime "main_photo_updated_at"
+    t.integer "realtor_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+    t.index ["realtor_id"], name: "index_properties_on_realtor_id"
     t.index ["region_id"], name: "index_properties_on_region_id"
   end
 
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_213721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "status"
     t.index ["property_id"], name: "index_proposals_on_property_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
