@@ -26,4 +26,5 @@ feature 'user login' do
 
     expect(page).to have_content('Invalido Email ou senha')
   end
+
 end
