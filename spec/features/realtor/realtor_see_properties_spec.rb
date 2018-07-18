@@ -24,7 +24,7 @@ feature 'realtor only visualize its properties' do
                                     realtor: realtor)
 
         visit root_path
-        click_on 'Entrar como corretor'
+        click_on 'Login como corretor'
         fill_in 'Email', with: 'realtor@realtor.com'
         fill_in 'Senha', with: '123456'
         click_on 'Acessar'   

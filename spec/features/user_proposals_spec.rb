@@ -27,7 +27,7 @@ feature 'User see own proposals' do
                                     property: property, status: 'pending')
 
         visit root_path
-        click_on 'Login'                                
+        click_on 'Login como usuário'                                
         
         fill_in 'Email', with: user.email
         fill_in 'Senha', with: user.password
@@ -43,7 +43,7 @@ feature 'User see own proposals' do
         user = User.create(email:'teste@teste.com', password:'123456')
 
         visit root_path
-        click_on 'Login'                                
+        click_on 'Login como usuário'                               
         
         fill_in 'Email', with: user.email
         fill_in 'Senha', with: user.password

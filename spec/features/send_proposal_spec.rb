@@ -16,7 +16,7 @@ feature 'send proposal' do
                             main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
                             realtor: realtor)
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
     
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password

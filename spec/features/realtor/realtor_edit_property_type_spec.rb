@@ -7,7 +7,7 @@ feature 'Realtor edit property type' do
     tipo_apartamento = PropertyType.create(name: 'Apartamento')
 
     visit root_path
-    click_on 'Entrar como corretor'
+    click_on 'Login como corretor'
     fill_in 'Email', with: corretor.email
     fill_in 'Senha', with: corretor.password
     click_on 'Acessar'
@@ -27,7 +27,7 @@ feature 'Realtor edit property type' do
     tipo_apartamento = PropertyType.create(name: 'Apartamento')
 
     visit root_path
-    click_on 'Entrar como corretor'
+    click_on 'Login como corretor'
     fill_in 'Email', with: corretor.email
     fill_in 'Senha', with: corretor.password
     click_on 'Acessar'

@@ -5,7 +5,7 @@ feature 'user sing Uo' do
     
 
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
     click_on 'Sign up'
 
     fill_in 'Email', with: 'teste@teste.com.br'
@@ -17,10 +17,6 @@ feature 'user sing Uo' do
     
     user = User.last
     expect(user.cpf).to eq "11122233344"
-
-
-    
-
 
   end
 end

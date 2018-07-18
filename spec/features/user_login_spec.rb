@@ -5,7 +5,7 @@ feature 'user login' do
     user = User.create(email: 'testeimersao@gmail.com', password:'123456')
 
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
     
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
@@ -18,7 +18,7 @@ feature 'user login' do
     user = User.new(email: 'testeimersao@gmail.com', password:'123456')
 
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
 
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
