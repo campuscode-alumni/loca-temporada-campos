@@ -4,13 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :proposals
-  validates_length_of :cpf, in:10..10 
+  
   validates_uniqueness_of :cpf
   validate :valid_cpf
   private
     def valid_cpf
-      invalid_cpfs = [12345678909, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999, 00000000000, 12345678909]
-      value = cpf.scan/ [0-9] /
+      invalid_cpfs = %w{12345678909, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999, 00000000000, 12345678909}
+      value = cpf.scan /[0-9]/
       if value.length == 11
         unless invalid_cpfs.member?(value.join)
           value = value.collect{|x| x.to_i}
@@ -25,6 +25,6 @@ class User < ApplicationRecord
           end  
         end
       end
-      errors.add(:cpf, "#{cpf} Inválido")
+      errors.add(:cpf, "cpf Inválido")
     end
 end

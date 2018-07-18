@@ -28,7 +28,7 @@ feature 'user sing Uo' do
     click_on 'Acessar'
         
     expect(User.count).to eq 0
-    expect(page).to have_content('CPF inválido')
+    expect(page).to have_content("cpf Inválido")
     
   end
 end

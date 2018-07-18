@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'Proposal approvement' do
   scenario 'successfully' do
-    user = User.create(email: 'realtor@admin.com', password: '123456')
-    realtor = Realtor.create(email: 'admin@admin.com.br', password: '123456')
+    user = User.create!(email: 'realtor@admin.com', password: '123456', cpf: '14688032390')
+    realtor = Realtor.create!(email: 'admin@admin.com.br', password: '123456')
     property_type = PropertyType.create!(name:'Casa de cachorro')
-    region = Region.create(name: 'Barueri')
+    region = Region.create!(name: 'Barueri')
     property = Property.create!(title: 'Casa grande com canil', 
                                         description: 'Faça a festa do seu cãozinho', 
                                         property_type: property_type, 
@@ -48,7 +48,7 @@ feature 'Proposal approvement' do
 
   scenario ' do not show proposal already approved' do
     realtor = Realtor.create(email: 'admin@admin.com.br', password: '123456')
-    user = User.create(email: 'realtor@admin.com', password: '123456')
+    user = User.create(email: 'realtor@admin.com', password: '123456', cpf: '14688032390')
     property_type = PropertyType.create(name:'Casa de cachorro')
     region = Region.create(name: 'Barueri')
     property = Property.create(title: 'Casa grande com canil', 

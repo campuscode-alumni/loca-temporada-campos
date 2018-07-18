@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'show proposal' do
   scenario 'successfully' do
     corretor = Realtor.create(email: 'corretor@teste.com', password: '123456')
-    user = User.create(email:'teste@teste.com', password: '1231231')
+    user = User.create(email:'teste@teste.com', password: '1231231', cpf: '14688032390')
     property_type = PropertyType.create(name: 'Apartamento')
     region = Region.create(name: 'Ceará')
     property = Property.create(title: 'Apartamento bonito', 
@@ -50,7 +50,7 @@ feature 'show proposal' do
   end
 
   scenario 'show message without proposals' do
-    user = User.create(email: 'teste@teste.com', password: '123456')
+    user = User.create(email: 'teste@teste.com', password: '123456', cpf: '14688032390')
     property_type = PropertyType.create(name: 'Apartamento')
     region = Region.new(name: 'Ceará')
     property = Property.new(title: 'Apartamento bonito', 
