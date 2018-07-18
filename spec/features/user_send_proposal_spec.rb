@@ -24,8 +24,8 @@ feature 'send proposal' do
     click_on 'Duartina'
     click_on 'Proposta'
 
-    fill_in 'Data de chegada', with: '01/30/2018'
-    fill_in 'Data de saída', with: '02/28/2018'
+    fill_in 'Data de chegada', with: '30/01/2018'
+    fill_in 'Data de saída', with: '28/02/2018'
     fill_in 'Número de hóspedes', with: '2'
     fill_in 'Finalidade da proposta', with: 'Festa'
     check 'Vai levar animais?'
@@ -35,13 +35,15 @@ feature 'send proposal' do
     last_proposal = Proposal.last
     expect(current_path).to eq (proposal_path(last_proposal.id))
     expect(page).to have_content('Proposta enviada com sucesso')
-    expect(page).to have_css('h5', text: proposal.property.title)
-    expect(page).to have_content('Email do usuário: testeimersao@gmail.com')
-    expect(page).to have_content("Data de criação: #{I18n.l last_proposal.created_at}")
-    expect(page).to have_content('De 30/01/2018 até 28/02/2018')
+    expect(page).to have_css('h5', text: last_proposal.property.title)
+    expect(page).to have_content('testeimersao@gmail.com')
+    expect(page).to have_content("#{I18n.l last_proposal.created_at, format: :short}")
+    expect(page).to have_css('dd', text: '30 de Janeiro de 2018')
+    expect(page).to have_css('dd', text: '28 de Fevereiro de 2018')
     expect(page).to have_content('Vai levar animais? Sim')
     expect(page).to have_content('Finalidade da proposta: Festa')
     expect(page).to have_content('Valor total da locação: R$ 2.900,00')
+    expect(page).not_to have_content('Aprovar')
   end
 
   scenario 'with not logged user' do

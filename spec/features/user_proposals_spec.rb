@@ -51,7 +51,7 @@ feature 'User see own proposals' do
         click_on 'Minhas propostas'
 
         expect(page).to have_content('Não existem propostas cadastradas')
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq(proposals_path)
     end
 
     scenario 'user are not signed in' do

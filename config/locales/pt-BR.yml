@@ -20,4 +20,8 @@ pt-BR:
       success: Imóvel cadastrado com sucesso
     update:
       success: Imóvel alterado com sucesso
+  proposal:
+    pet:
+      "true": Sim
+      "false": Não
         
