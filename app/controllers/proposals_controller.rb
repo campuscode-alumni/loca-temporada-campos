@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
     @property = Property.find(property_id)
     @proposal = @property.proposals.build(params.require(:proposal).permit(:start_date, :end_date, :total_guests, :rent_purpose, :pet, :smoker))
     @proposal.user= current_user
-    calcula_valor_total @proposal
+
     if @proposal.save
       flash[:notice] = 'Proposta enviada com sucesso'
       redirect_to @proposal
@@ -47,14 +47,6 @@ class ProposalsController < ApplicationController
     redirect_to proposals_path, notice: 'Proposta aprovado com sucesso!'
 
   end
-
-  private
-
-  def calcula_valor_total(proposal)
-    dias = (proposal.end_date - proposal.start_date).to_i
-    proposal.total_amount = proposal.property.daily_rate * dias
-  end
-
 end
 
 

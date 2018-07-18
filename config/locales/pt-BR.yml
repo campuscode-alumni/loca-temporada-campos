@@ -1,5 +1,6 @@
 ---
 pt-BR:
+  currency: "R$ %{value}" 
   regions:
     fail: Você deve preencher todos os campos
     show:
