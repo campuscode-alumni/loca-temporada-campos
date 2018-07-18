@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User see own proposals' do
     scenario 'successfully' do
         corretor = Realtor.create(email: 'corretor@teste.com', password: '123456')
-        user = User.create(email:'teste@teste.com', password:'123456')
+        user = User.create(email:'teste@teste.com', password:'123456', cpf: '14688032390')
         region = Region.create(name: 'Gramado')
         property_type = PropertyType.create(name: 'Apartamento')
         property = Property.create(title: 'Apartamento em Gramado',
@@ -40,7 +40,7 @@ feature 'User see own proposals' do
     end
 
     scenario 'user has no proposals' do
-        user = User.create(email:'teste@teste.com', password:'123456')
+        user = User.create(email:'teste@teste.com', password:'123456', cpf: '14688032390')
 
         visit root_path
         click_on 'Login como usuário'                               

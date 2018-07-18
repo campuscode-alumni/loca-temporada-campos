@@ -4,7 +4,7 @@ feature 'send proposal' do
 
   scenario 'successfully' do
     realtor = Realtor.create(email:'realtor@admin.com', password: '123456')
-    user = User.create(email: 'testeimersao@gmail.com', password:'123456')
+    user = User.create(email: 'testeimersao@gmail.com', password:'123456', cpf: '14688032390')
     realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     duartina = Region.create(name: 'Duartina')
     property_type_casa = PropertyType.create(name: 'Casa')
