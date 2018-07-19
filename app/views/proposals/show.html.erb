@@ -1,4 +1,6 @@
-<h1>Proposta Pendente</h1>
+<%= render @proposal %>
 
-
-<%= link_to 'Aprovar', approve_proposal_path %>
+<% if realtor_signed_in? %>
+  <h1>Proposta Pendente</h1>
+  <%= link_to 'Aprovar', approve_proposal_path %>
+<% end%>

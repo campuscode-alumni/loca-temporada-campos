@@ -37,6 +37,11 @@ feature 'Proposal approvement' do
                                 status: 'pending')
   
     visit root_path
+    click_on 'Login como corretor'
+    fill_in 'Email', with: realtor.email
+    fill_in 'Senha', with: realtor.password
+    click_on 'Acessar'
+
     click_on 'Ver propostas'
     click_on 'Detalhes'
     click_on 'Aprovar'
@@ -82,6 +87,11 @@ feature 'Proposal approvement' do
                                   status: 'pending')
 
     visit root_path
+    click_on 'Login como corretor'
+    fill_in 'Email', with: realtor.email
+    fill_in 'Senha', with: realtor.password
+    click_on 'Acessar'
+
     click_on 'Ver propostas'
     click_on 'Detalhes'
     click_on 'Aprovar'

@@ -24,9 +24,8 @@ feature 'show proposal' do
                                 allow_smokers: true,
                                 realtor: corretor)
                                 
-    proposal = Proposal.create(start_date: '10-10-2007',
+    proposal = Proposal.new(start_date: '10-10-2017',
                                 end_date: '15-10-2017',
-                                total_amount: 20,
                                 total_guests: 20,
                                 user: user,
                                 phone: '659546654', 
@@ -36,17 +35,24 @@ feature 'show proposal' do
                                 details: 'Testando proposta', 
                                 property: property,
                                 status: 'pending')
-    
+    proposal.save
+
     visit root_path
+    click_on 'Login como corretor'
+    fill_in 'Email', with: corretor.email
+    fill_in 'Senha', with: corretor.password
+    click_on 'Acessar'
+
     click_on 'Ver propostas'
 
     expect(page).to have_css('dd', text: proposal.user.email)
-    expect(page).to have_css('dd', text: proposal.created_at)
-    expect(page).to have_css('dd', text: proposal.start_date)
-    expect(page).to have_css('dd', text: proposal.end_date)
-    expect(page).to have_css('dd', text: proposal.pet)
+    expect(page).to have_css('dd', text: I18n.l(proposal.created_at, format: :short))
+    expect(page).to have_css('dd', text: I18n.l(proposal.start_date, format: :long))
+    expect(page).to have_css('dd', text: I18n.l(proposal.end_date, format: :long))
+    expect(page).to have_css('dd', text: I18n.t("proposal.pet.#{proposal.pet}"))
     expect(page).to have_css('dd', text: proposal.rent_purpose)
-    expect(page).to have_css('dd', text: proposal.total_amount)
+    expect(page).to have_css('dd', text: 'R$ 450,00')
+
   end
 
   scenario 'show message without proposals' do
@@ -70,7 +76,7 @@ feature 'show proposal' do
                                 allow_pets: true, 
                                 allow_smokers: true)
                                 
-    proposal = Proposal.new(start_date: '10-10-2007',
+    proposal = Proposal.new(start_date: '10-10-2017',
                                 end_date: '15-10-2017',
                                 total_amount: 20,
                                 total_guests: 20,
@@ -85,7 +91,7 @@ feature 'show proposal' do
     visit root_path
     click_on 'Ver propostas'
 
-    expect(page).to have_content('Não existem propostas cadastradas')
+    expect(page).to have_content('nao autorizado')
     expect(page).not_to have_css('dd', text: proposal.user.email)
 
   end

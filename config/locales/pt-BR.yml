@@ -1,5 +1,16 @@
 ---
 pt-BR:
+  activerecord:
+    models:
+      proposal: Proposta
+    attributes:
+      proposal:
+        start_date: Data de chegada
+        end_date: Data de saída
+        total_guests: Número de hóspedes
+        rent_purpose: Finalidade da proposta
+  validate:
+    error: Você deve preencher todos os campos
   regions:
     fail: Você deve preencher todos os campos
     show:
@@ -20,4 +31,8 @@ pt-BR:
       success: Imóvel cadastrado com sucesso
     update:
       success: Imóvel alterado com sucesso
+  proposal:
+    pet:
+      "true": Sim
+      "false": Não
         

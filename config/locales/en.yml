@@ -31,30 +31,4 @@
 
 en:
   hello: "Hello world"
-  activerecord:
-    errors:
-      models:
-        region:
-          attributes:
-            name:
-              blank: não pode ficar em branco
-        property_type:
-          attributes:
-            name:
-              blank: não pode ficar em branco
-        property:
-          attributes:
-            main_photo:
-              blank: Adicione uma foto
-            title: 
-              blank: não pode ficar em branco
-            room_quantity:
-              blank: não pode ficar em branco
-            maximum_guests:
-              blank: não pode ficar em branco
-            minimum_rent:
-              blank: não pode ficar em branco
-            maximum_rent: 
-              blank: não pode ficar em branco
-            daily_rate: 
-              blank: não pode ficar em branco
+  
