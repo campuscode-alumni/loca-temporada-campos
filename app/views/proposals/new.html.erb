@@ -1,11 +1,15 @@
+<% @proposal.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for([@property, @proposal]) do |f| %>
-  <%= f.label :start_date, 'Data de chegada' %>
+  <%= f.label :start_date %>
   <%= f.text_field :start_date %>
-  <%= f.label :end_date, 'Data de saída' %>
+  <%= f.label :end_date %>
   <%= f.text_field :end_date %>
-  <%= f.label :total_guests, 'Número de hóspedes' %>
+  <%= f.label :total_guests %>
   <%= f.text_field :total_guests %>
-  <%= f.label :rent_purpose, 'Finalidade da proposta' %>
+  <%= f.label :rent_purpose %>
   <%= f.text_field :rent_purpose %>
   <%= f.label :pet, 'Vai levar animais?' %>
   <%= f.check_box :pet %>

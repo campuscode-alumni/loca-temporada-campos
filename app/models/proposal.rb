@@ -1,8 +1,10 @@
 class Proposal < ApplicationRecord
-  after_validation :calcula_valor_total
-  
+  before_save :calcula_valor_total
+
   belongs_to :property
   belongs_to :user
+
+  validates :start_date, :end_date, :total_guests, :rent_purpose, presence: true
 
   enum status: [:pending, :approved]
 

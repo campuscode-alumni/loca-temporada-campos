@@ -1,6 +1,16 @@
 ---
 pt-BR:
-  currency: "R$ %{value}" 
+  activerecord:
+    models:
+      proposal: Proposta
+    attributes:
+      proposal:
+        start_date: Data de chegada
+        end_date: Data de saída
+        total_guests: Número de hóspedes
+        rent_purpose: Finalidade da proposta
+  validate:
+    error: Você deve preencher todos os campos
   regions:
     fail: Você deve preencher todos os campos
     show:
