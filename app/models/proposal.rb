@@ -8,9 +8,21 @@ class Proposal < ApplicationRecord
 
   enum status: [:pending, :approved]
  
-  validate :days_rent
+  validate :days_rent, :valid_smoker, :valid_pet
   
   private
+
+  def valid_pet
+    if pet && !property.allow_pets 
+      errors.add(:smoker, "Nesta propriedade não é permitido a presença de animais!")
+    end
+  end
+
+  def valid_smoker
+    if smoker && !property.allow_smokers 
+      errors.add(:smoker, "Nesta propriedade não é permitido a presença de fumantes!")
+    end
+  end
 
   def days_rent
    end_date && start_date && calc_days_rent

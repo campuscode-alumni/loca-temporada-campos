@@ -17,7 +17,7 @@ feature 'User see own proposals' do
                                     area: 85, room_quantity: 3,
                                     accessibility: true, maximum_guests: 4,
                                     minimum_rent: 2, maximum_rent: 5,
-                                    daily_rate: 350,
+                                    daily_rate: 350,allow_smokers: true,
                                     main_photo: File.new(Rails.root.join('spec', 'support','gramadoAP.jpg')),
                                     realtor: corretor)
 
@@ -29,7 +29,7 @@ feature 'User see own proposals' do
                                     area: 85, room_quantity: 3,
                                     accessibility: true, maximum_guests: 4,
                                     minimum_rent: 2, maximum_rent: 5,
-                                    daily_rate: 350,
+                                    daily_rate: 350,allow_smokers: true,
                                     main_photo: File.new(Rails.root.join('spec', 'support','gramadoAP.jpg')),
                                     realtor: corretor)
 
