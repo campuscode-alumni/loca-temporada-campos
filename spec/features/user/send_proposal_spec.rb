@@ -4,7 +4,7 @@ feature 'send proposal' do
 
   scenario 'successfully' do
     realtor = Realtor.create(email:'realtor@admin.com', password: '123456')
-    user = User.create(email: 'testeimersao@gmail.com', password:'123456')
+    user = User.create(email: 'testeimersao@gmail.com', password:'123456', cpf: '30838677002' )
     realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     duartina = Region.create(name: 'Duartina')
     property_type_casa = PropertyType.create(name: 'Casa')
@@ -16,7 +16,7 @@ feature 'send proposal' do
                             main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
                             realtor: realtor)
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
     
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
@@ -67,7 +67,7 @@ feature 'send proposal' do
 
   scenario '' do
     realtor = Realtor.create(email:'realtor@admin.com', password: '123456')
-    user = User.create(email: 'testeimersao@gmail.com', password:'123456')
+    user = User.create(email: 'testeimersao@gmail.com', password:'123456', cpf: '63728102040')
     realtor = Realtor.create(email: 'corretor@corretora.com', password: '123456')
     duartina = Region.create(name: 'Duartina')
     property_type_casa = PropertyType.create(name: 'Casa')
@@ -79,7 +79,7 @@ feature 'send proposal' do
                             main_photo: File.new(Rails.root.join('spec', 'support','apartment.jpg')),
                             realtor: realtor)
     visit root_path
-    click_on 'Login'
+    click_on 'Login como usuário'
     
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password

@@ -4,8 +4,8 @@ feature 'User see own proposals' do
     scenario 'successfully' do
         corretor = Realtor.create(email: 'corretor@teste.com', password: '123456')
 
-        user = User.create(email:'teste@teste.com', password:'123456')
-        another_user = User.create(email:'other@teste.com', password:'123456')
+        user = User.create(email:'teste@teste.com', password:'123456', cpf: '14688032390')
+        another_user = User.create(email:'other@teste.com', password:'123456', cpf: '70414888022')
 
         region = Region.create(name: 'Gramado')
         property_type = PropertyType.create(name: 'Apartamento')
@@ -50,7 +50,7 @@ feature 'User see own proposals' do
                                     property: other_property, status: 'pending')
 
         visit root_path
-        click_on 'Login'                                
+        click_on 'Login como usuário'                                
         
         fill_in 'Email', with: user.email
         fill_in 'Senha', with: user.password
@@ -63,10 +63,10 @@ feature 'User see own proposals' do
     end
 
     scenario 'user has no proposals' do
-        user = User.create(email:'teste@teste.com', password:'123456')
+        user = User.create(email:'teste@teste.com', password:'123456', cpf: '14688032390')
 
         visit root_path
-        click_on 'Login'                                
+        click_on 'Login como usuário'                               
         
         fill_in 'Email', with: user.email
         fill_in 'Senha', with: user.password
