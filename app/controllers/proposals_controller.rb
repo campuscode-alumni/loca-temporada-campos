@@ -13,36 +13,32 @@ class ProposalsController < ApplicationController
     @property = Property.find(property_id)
     @proposal = @property.proposals.build(params.require(:proposal).permit(:start_date, :end_date, :total_guests, :rent_purpose, :pet, :smoker))
     @proposal.user= current_user
+
     if @proposal.save
       flash[:notice] = 'Enviado'
+      redirect_to root_path
     else
       flash[:alert] = 'Erro'
+      render :new
     end
-    redirect_to root_path
+
   end
 
   def index 
     @proposals = Proposal.pending
-
     if @proposals.empty?
       flash[:alert] = 'Não existem propostas cadastradas'  
-      
     end
-
   end
 
   def show      
-
   end
 
   def approve
-
     @proposal = Proposal.find(params[:id])
     @proposal.approved!
     redirect_to proposals_path, notice: 'Proposta aprovado com sucesso!'
-
   end
-
 end
 
 

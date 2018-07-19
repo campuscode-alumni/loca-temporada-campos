@@ -20,10 +20,11 @@ feature 'Proposal approvement' do
                                         daily_rate: 160, 
                                         accessibility: false, 
                                         allow_pets: true, 
-                                        allow_smokers: true, realtor: realtor)
+                                        allow_smokers: true, 
+                                        realtor: realtor)
 
-    proposal = Proposal.create(start_date: '10-06-2018', 
-                                end_date: '30-07-2018',
+    proposal = Proposal.create!(start_date: '2018-06-10', 
+                                end_date: '2018-07-30',
                                 total_amount: 200, 
                                 total_guests: 10, 
                                 user: user, 

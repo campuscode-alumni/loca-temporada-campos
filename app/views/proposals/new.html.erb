@@ -1,3 +1,9 @@
+<ul>
+  <% @proposal.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
 <%= form_for([@property, @proposal]) do |f| %>
   <%= f.label :start_date, 'Data de chegada' %>
   <%= f.text_field :start_date %>
