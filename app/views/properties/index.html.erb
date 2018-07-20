@@ -5,14 +5,3 @@ Bem-vindo ao aluga temporada!
     <li><%= link_to region.name, region %></li>
   <% end %>
 </ul>
-
-
-<%= link_to 'Cadastrar Imóvel', new_property_path %>
-
-<%= link_to 'Ver propostas', proposals_path %>
-
-<%= link_to 'Meus imóveis', realtors_path %>
-
-      <% if user_signed_in? %>
-      <p> <%= link_to 'Minhas propostas', proposals_path %>  </p>
-      <% end%>

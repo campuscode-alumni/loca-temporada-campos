@@ -21,6 +21,8 @@
 
      
       <%if user_signed_in?%>
+       <li class="nav_item">
+        <a class="nav-link"<%= link_to 'Minhas propostas', proposals_path %> </a>
         <%= current_user.email %>
         <li class="nav-item">
           <a class="nav-link"<%= link_to('Sair', destroy_user_session_path, method: :delete)%></a>
@@ -45,4 +47,9 @@
 </nav>
 
 
-
+<% if user_signed_in? %>
+ 
+<% elsif realtor_signed_in? %>
+  <%= link_to 'Ver propostas', proposals_path %>
+  <%= link_to 'Meus imóveis', realtors_path %>
+<% end%>
